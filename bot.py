@@ -1,8 +1,8 @@
 import requests
-import telebot
+from telebot import TeleBot  #импорт
 
 TOKEN = "8280323274:AAE27xDRJ-JB_I7miydOdhNul8-Tesr9rh0"
-bot = telebot.TeleBot(TOKEN)
+bot = TeleBot(TOKEN)
 
 @bot.message_handler(commands=['start', 'help'])
 def help_command(message):
@@ -24,5 +24,6 @@ def send_weather(message):
     else:
         bot.reply_to(message, "Напиши 'погода'")
 
-print("Бот запущен!")
-bot.polling()
+if __name__ == "__main__":
+    print("Бот запущен!")
+    bot.infinity_polling()  #infinity_polling вместо polling
